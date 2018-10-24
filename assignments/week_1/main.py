@@ -7,7 +7,6 @@ def load_space_csv_data(file_name):
     cols = list(df.columns.values)
     return df, cols
 
-N = 1;
 m = 51;
 
 df, cols = load_space_csv_data('poverty.txt')
@@ -16,9 +15,8 @@ PovPct = df['PovPct'].values
 A0 = np.transpose(np.array([df['PovPct'].values,df['ViolCrime'].values,np.ones(m)]))
 b0 = np.transpose(df['Brth15to17'].values)
 
-with tf.variable_scope('layer1', reuse=tf.AUTO_REUSE):
-    A = tf.get_variable('A', initializer=A0)
-    b = tf.get_variable('b', initializer=b0)
+A = tf.constant(A0)
+b = tf.constant(b0)
 
 matrix = tf.matmul(tf.transpose(A),A)
 inverse = tf.matrix_inverse(matrix)
@@ -27,8 +25,6 @@ regress = tf.matmul(
         tf.expand_dims(b,axis = 1))
 
 with tf.Session() as sess:
-    init_op = tf.global_variables_initializer()
-    sess.run(init_op)
     output = sess.run(regress)
     print(output)
 
