@@ -12,13 +12,13 @@ def display(image, label):
 
 
 def load_data():
-    with open('mnist/train-images-idx3-ubyte.gz', 'rb') as f:
+    with open('../../data/mnist/train-images-idx3-ubyte.gz', 'rb') as f:
         train_images = np.squeeze(extract_images(f))
-    with open('mnist/train-labels-idx1-ubyte.gz', 'rb') as f:
+    with open('../../data/mnist/train-labels-idx1-ubyte.gz', 'rb') as f:
         train_labels = extract_labels(f)
-    with open('mnist/t10k-images-idx3-ubyte.gz', 'rb') as f:
+    with open('../../data/mnist/t10k-images-idx3-ubyte.gz', 'rb') as f:
         test_images = np.squeeze(extract_images(f))
-    with open('mnist/t10k-labels-idx1-ubyte.gz', 'rb') as f:
+    with open('../../data/mnist/t10k-labels-idx1-ubyte.gz', 'rb') as f:
         test_labels = extract_labels(f)
     return train_images, train_labels, test_images, test_labels
 
