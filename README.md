@@ -1,4 +1,4 @@
-# dl-imperial-maths
+# Deep learning Course
 Code and assignment repository for the Imperial College Mathematics department Deep Learning course
 
 ## Course description
